@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Upload your image</h2>
+  <input type="file" id="imageInput" accept="image/*">
+  <br><br>
+  <img id="preview" width="250"  />
+  <br><br>
+  <button id="analyzeBtn">Analyze Emotion</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const result = document.getElementById('result');
+
+    let selectedFile = null;
+
+    // Preview the image temporarily in browser (memory only)
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      selectedFile = file;
+      const objectURL = URL.createObjectURL(file);
+      preview.src = objectURL;
+    });
+
+    // Send image to backend temporarily
+    analyzeBtn.addEventListener('click', async () => {
+      if (!selectedFile) {
+        alert("Please upload an image first!");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const res = await fetch("http://127.0.0.1:8000/predict", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      result.innerText = `Emotion: ${data}`;
+
+      // revoke temporary URL to free memory
+      URL.revokeObjectURL(preview.src);
+    });
+  </script>
+</body>
+</html>

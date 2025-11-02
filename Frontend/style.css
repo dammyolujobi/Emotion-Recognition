@@ -1,0 +1,124 @@
+/* ===== Apple-Inspired Emotion Detector Design ===== */
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+  color: #1d1d1f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Headings */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  color: #007aff;
+  transition: color 0.3s ease;
+}
+
+/* File Input */
+input[type="file"] {
+  background-color: #ffffff;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+  border-color: #007aff;
+  box-shadow: 0 0 8px rgba(0, 122, 255, 0.2);
+}
+
+/* Preview Image */
+#preview {
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+}
+
+#preview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Button */
+#analyzeBtn {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#analyzeBtn:hover {
+  background-color: #0a84ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+}
+
+#analyzeBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Result Text */
+#result {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: #1d1d1f;
+  font-weight: 500;
+}
+
+/* Smooth Fade-In Animation */
+body {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  #preview {
+    width: 90%;
+  }
+
+  #analyzeBtn {
+    width: 80%;
+  }
+}
