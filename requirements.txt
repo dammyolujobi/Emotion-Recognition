@@ -14,3 +14,5 @@ python-multipart
 
 # Optional: only if you want to use OpenCV for debugging or webcam demo
 opencv-python
+
+flask
