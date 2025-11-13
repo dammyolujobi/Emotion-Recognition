@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, request
+from flask import Flask, render_template, request
 from transformers import AutoModelForImageClassification, AutoImageProcessor
 from PIL import Image
 import torch
@@ -34,7 +34,7 @@ def index():
             image.save(buffer, format="JPEG")
             image_data = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-    return render_template_string(template = "Template\main.html", label=label, image_data=image_data)
+    return render_template("main.html", label=label, image_data=image_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
